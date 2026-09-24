@@ -482,22 +482,38 @@ function fetchSheet(){
 }
 
 function parseRows(json){
-  if (!json || !json.table) throw new Error('Unerwartetes Datenformat.');
-  const cols = json.table.cols.map(c => normLabel(c.label));
+  if (json && json.status === 'error') {
+    const detail = (json.errors || []).map(e => e.detailed_message || e.message || e.reason).join('; ');
+    throw new Error('Google Sheets meldet einen Fehler: ' + (detail || 'Zugriff oder Tabellenblatt prüfen.'));
+  }
+  if (!json || !json.table) throw new Error('Unerwartetes Datenformat von Google Sheets.');
+
+  // Google Visualization liefert Spaltenüberschriften in `label`, gelegentlich
+  // nur in `id`. Unterschiedliche Schreibweisen der Kopfzeile tolerieren.
+  const normalizeHeader = value => (value || '').toString().trim().toLowerCase()
+    .normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]/g, '');
+  const cols = json.table.cols.map(c => normalizeHeader(c.label || c.id));
+  const indexOf = (...names) => cols.findIndex(c => names.some(n => c === normalizeHeader(n)));
   const idx = {
-    zeitstempel: cols.indexOf('zeitstempel'),
-    kategorie: cols.indexOf('kategorie'),
-    titel: cols.indexOf('titel'),
-    inhalt: cols.indexOf('inhalt'),
-    quelleName: cols.indexOf('quelle_name'),
-    quelleUrl: cols.indexOf('quelle_url'),
-    status: cols.indexOf('status'),
-    publikationsdatum: cols.indexOf('publikationsdatum'),
-    istPositiv: cols.indexOf('ist_positiv'),
+    zeitstempel: indexOf('zeitstempel', 'timestamp'),
+    kategorie: indexOf('kategorie', 'category'),
+    titel: indexOf('titel', 'title'),
+    inhalt: indexOf('inhalt', 'beschreibung', 'description'),
+    quelleName: indexOf('quelle_name', 'quelle name', 'source name'),
+    quelleUrl: indexOf('quelle_url', 'quelle url', 'source url'),
+    status: indexOf('status'),
+    publikationsdatum: indexOf('publikationsdatum', 'datum', 'published'),
+    istPositiv: indexOf('ist_positiv', 'ist positiv'),
   };
+  if (idx.titel < 0) {
+    const actual = json.table.cols.map(c => c.label || c.id || '(leer)').join(', ');
+    throw new Error('Spalte "Titel" nicht gefunden. Erkannte Spalten: ' +
+      (actual || 'keine') + '. Bitte Kopfzeile im Tab "Publizierte_Meldungen" kontrollieren.');
+  }
 
   const rows = (json.table.rows || []).map(r => {
-    const cell = i => (i >= 0 && r.c[i] ? r.c[i].v : null);
+    const cell = i => (i >= 0 && r.c[i] ? (r.c[i].v ?? r.c[i].f ?? null) : null);
     return {
       zeitstempel: cell(idx.zeitstempel),
       kategorie: (cell(idx.kategorie) || 'Allgemein').toString().trim(),
@@ -510,9 +526,6 @@ function parseRows(json){
       istPositiv: idx.istPositiv >= 0 ? cell(idx.istPositiv) : true,
     };
   });
-
-  // Der Tab "Publizierte_Meldungen" enthält nur bereits freigegebene
-  // Beiträge, daher genügt hier ein einfacher Check auf einen Titel.
   return rows.filter(r => !!r.titel);
 }
 
