@@ -308,6 +308,30 @@
     .masthead-inner{flex-direction:column; align-items:flex-start;}
     .status-panel{width:100%; justify-content:space-between;}
   }
+
+/* Modernes Blau-Grün-Design – Darstellung, Datenlogik unverändert */
+:root{--cream:#f2f7f7;--paper:#ffffff;--ink:#193340;--ink-soft:#516b75;--ink-faint:#788c94;--line:rgba(25,61,72,.12);--gold:#55cab7;--gold-ink:#13594e;--forest:#168878;--forest-ink:#116d60;--sky:#448eae;--sky-ink:#205777;--berry:#7287b0;--berry-ink:#44577f;--teal:#2a9d99;--teal-ink:#145d60;--mustard:#6ea6ad;--mustard-ink:#2a6369;--radius:20px;--shadow:0 7px 26px rgba(33,77,91,.065);--shadow-hover:0 18px 44px rgba(33,77,91,.14)}
+body{background:linear-gradient(170deg,#eaf5f5 0%,#f5f9fb 42%,#f3f7f7 100%);background-attachment:fixed}
+header.masthead{position:relative;background:linear-gradient(115deg,#123849 0%,#145466 55%,#147b74 100%);border-bottom:0;color:#f7ffff;box-shadow:0 8px 30px rgba(24,73,86,.11);backdrop-filter:none;-webkit-backdrop-filter:none;overflow:hidden}
+header.masthead:before{content:'';position:absolute;width:440px;height:440px;border-radius:50%;right:-165px;top:-240px;background:radial-gradient(circle,rgba(148,232,216,.28),transparent 68%);pointer-events:none}
+header.masthead:after{content:'';position:absolute;width:310px;height:310px;border:1px solid rgba(205,251,238,.16);border-radius:50%;right:8%;top:-205px;pointer-events:none}
+.masthead-inner{position:relative;z-index:1;padding-top:28px;padding-bottom:23px;align-items:center}
+.brand{gap:16px}.brand .sun{width:48px;height:48px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:15px;padding:7px;box-shadow:0 7px 24px rgba(0,0,0,.1)}
+.sun-core{fill:#a7e5d6}.sun-ray{stroke:#a7e5d6}
+.brand-text h1{font-family:'Inter',system-ui,sans-serif;font-style:normal;font-size:clamp(25px,3.3vw,35px);font-weight:700;letter-spacing:-.045em}
+.brand-text p{color:#b9dcdf;font-size:11px;letter-spacing:.135em;margin-top:7px}
+.status-panel{color:#d1e8e9;gap:16px}.live-dot{background:#7ae1c1;box-shadow:0 0 0 5px rgba(122,225,193,.13)}
+.refresh-btn{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.27);padding:9px 15px}.refresh-btn:hover{border-color:#abf0da;background:rgba(255,255,255,.18)}
+.filter-bar{position:relative;z-index:1;padding-top:17px;padding-bottom:22px;border-top:1px solid rgba(255,255,255,.13)}
+.pill{background:rgba(255,255,255,.09);color:#e6f6f4;border-color:rgba(255,255,255,.22);padding:8px 14px;font-size:12px}.pill:hover{border-color:#b0e5d7;background:rgba(255,255,255,.17)}.pill[aria-pressed="true"]{background:#dcf5ec;color:#15574f;border-color:#dcf5ec;font-weight:700}
+.search-wrap input{background:rgba(255,255,255,.96);border-color:transparent;box-shadow:0 2px 14px rgba(8,48,61,.15);padding:11px 16px 11px 38px}.search-wrap input::placeholder{color:#788b92}
+main{padding-top:0;padding-bottom:72px}.intro{padding:43px 0 22px;max-width:760px}.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:#168676}.eyebrow:before{content:'';width:19px;height:2px;background:#39ac9b;border-radius:2px}
+.intro h2{font-family:'Inter',system-ui,sans-serif;font-size:clamp(26px,4.2vw,43px);line-height:1.15;letter-spacing:-.052em;margin:13px 0 13px;color:#193c49;font-weight:750}.intro p{font-size:15px;line-height:1.75;color:#59717a;max-width:650px;margin:0}.results-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:14px 0 0;padding-bottom:12px;border-bottom:1px solid #dce7e9}.results-heading h3{font-size:14px;letter-spacing:.02em;color:#305563;margin:0;font-weight:700}.results-heading span{color:#7a929b;font-size:12px}
+.grid{gap:21px;margin-top:22px}.card{border:1px solid rgba(52,109,124,.105);border-radius:20px;padding:24px;box-shadow:var(--shadow);gap:15px;overflow:hidden}.card:before{content:'';height:4px;position:absolute;top:0;left:0;right:0;background:linear-gradient(90deg,#4eb5aa,#8ed7ce 60%,#bddce6)}.card:hover{transform:translateY(-5px);border-color:#b3d5d7;box-shadow:var(--shadow-hover)}.card h2{font-family:'Inter',system-ui,sans-serif;font-weight:750;letter-spacing:-.03em;font-size:19px;line-height:1.42;color:#173a49}.card p.excerpt{font-size:14px;line-height:1.75;color:#57707b;-webkit-line-clamp:5}.badge{letter-spacing:.065em;font-size:10.5px;padding:7px 11px}.badge-new{background:#168676}.card-foot{border-top:1px solid #edf1f2;padding-top:15px;color:#80929b;font-size:12px}.card-foot a{color:#168676}.card-foot a:hover{color:#105a55}
+.state-message{padding:80px 20px}.state-message h3{font-family:'Inter',system-ui,sans-serif;font-style:normal;color:#214452}.retry-btn{background:#146e72;border-color:#146e72}.site-footer{color:#78919a;border-color:#d5e4e6}.toast{background:#173e4c}.toast .dot{background:#65d6b7}
+@media(max-width:560px){.masthead-inner{padding-top:22px}.status-panel{flex-wrap:wrap}.filter-bar{padding-top:19px}.intro{padding-top:34px}.intro p{font-size:14px}.card{padding:20px}.results-heading{align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){.card,.refresh-btn,.pill{transition:none}.live-dot,.sun-rays,.badge-new{animation:none!important}}
+
 </style>
 </head>
 <body>
@@ -331,8 +355,8 @@
         </g>
       </svg>
       <div class="brand-text">
-        <h1>GoodNews SWISS</h1>
-        <p>Positive Nachrichten aus der Schweiz</p>
+        <h1>GoodNews CLN6</h1>
+        <p>Positive Nachrichten für Betroffene</p>
       </div>
     </div>
     <div class="status-panel">
@@ -357,6 +381,12 @@
 </header>
 
 <main>
+  <section class="intro" aria-labelledby="introTitle">
+    <span class="eyebrow">CLN6 · Forschung & Perspektiven</span>
+    <h2 id="introTitle">Jeder Fortschritt zählt.</h2>
+    <p>Entdecke ermutigende Entwicklungen rund um CLN6, die Batten-Krankheit und verwandte Forschungsansätze. Verständlich zusammengefasst, mit direkten Links zu den Originalquellen.</p>
+  </section>
+  <div class="results-heading"><h3>Aktuelle Meldungen</h3><span>Nachrichten aus der Forschung</span></div>
   <div class="grid" id="grid">
     <div class="skeleton"></div>
     <div class="skeleton"></div>
@@ -365,7 +395,7 @@
 </main>
 
 <footer class="site-footer">
-  <span>Quelle: GoodNews_App_SWISS_Datenbank (Google Sheets)</span>
+  <span>Quelle: GoodNews_App_CLN_Datenbank (Google Sheets)</span>
   <span id="lastUpdated">–</span>
 </footer>
 
@@ -482,22 +512,38 @@ function fetchSheet(){
 }
 
 function parseRows(json){
-  if (!json || !json.table) throw new Error('Unerwartetes Datenformat.');
-  const cols = json.table.cols.map(c => normLabel(c.label));
+  if (json && json.status === 'error') {
+    const detail = (json.errors || []).map(e => e.detailed_message || e.message || e.reason).join('; ');
+    throw new Error('Google Sheets meldet einen Fehler: ' + (detail || 'Zugriff oder Tabellenblatt prüfen.'));
+  }
+  if (!json || !json.table) throw new Error('Unerwartetes Datenformat von Google Sheets.');
+
+  // Google Visualization liefert Spaltenüberschriften in `label`, gelegentlich
+  // nur in `id`. Unterschiedliche Schreibweisen der Kopfzeile tolerieren.
+  const normalizeHeader = value => (value || '').toString().trim().toLowerCase()
+    .normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]/g, '');
+  const cols = json.table.cols.map(c => normalizeHeader(c.label || c.id));
+  const indexOf = (...names) => cols.findIndex(c => names.some(n => c === normalizeHeader(n)));
   const idx = {
-    zeitstempel: cols.indexOf('zeitstempel'),
-    kategorie: cols.indexOf('kategorie'),
-    titel: cols.indexOf('titel'),
-    inhalt: cols.indexOf('inhalt'),
-    quelleName: cols.indexOf('quelle_name'),
-    quelleUrl: cols.indexOf('quelle_url'),
-    status: cols.indexOf('status'),
-    publikationsdatum: cols.indexOf('publikationsdatum'),
-    istPositiv: cols.indexOf('ist_positiv'),
+    zeitstempel: indexOf('zeitstempel', 'timestamp'),
+    kategorie: indexOf('kategorie', 'category'),
+    titel: indexOf('titel', 'title'),
+    inhalt: indexOf('inhalt', 'beschreibung', 'description'),
+    quelleName: indexOf('quelle_name', 'quelle name', 'source name'),
+    quelleUrl: indexOf('quelle_url', 'quelle url', 'source url'),
+    status: indexOf('status'),
+    publikationsdatum: indexOf('publikationsdatum', 'datum', 'published'),
+    istPositiv: indexOf('ist_positiv', 'ist positiv'),
   };
+  if (idx.titel < 0) {
+    const actual = json.table.cols.map(c => c.label || c.id || '(leer)').join(', ');
+    throw new Error('Spalte "Titel" nicht gefunden. Erkannte Spalten: ' +
+      (actual || 'keine') + '. Bitte Kopfzeile im Tab "Publizierte_Meldungen" kontrollieren.');
+  }
 
   const rows = (json.table.rows || []).map(r => {
-    const cell = i => (i >= 0 && r.c[i] ? r.c[i].v : null);
+    const cell = i => (i >= 0 && r.c[i] ? (r.c[i].v ?? r.c[i].f ?? null) : null);
     return {
       zeitstempel: cell(idx.zeitstempel),
       kategorie: (cell(idx.kategorie) || 'Allgemein').toString().trim(),
@@ -510,9 +556,6 @@ function parseRows(json){
       istPositiv: idx.istPositiv >= 0 ? cell(idx.istPositiv) : true,
     };
   });
-
-  // Der Tab "Publizierte_Meldungen" enthält nur bereits freigegebene
-  // Beiträge, daher genügt hier ein einfacher Check auf einen Titel.
   return rows.filter(r => !!r.titel);
 }
 
@@ -710,6 +753,7 @@ els.sourceToggleBtn.addEventListener('click', () => {
   state.gid = state.viewingArchive ? CONFIG.gidArchive : CONFIG.gidCurrent;
   state.firstLoad = true; // beim Quellenwechsel keine "Neu"-Badges/Toasts
   els.sourceToggleLabel.textContent = state.viewingArchive ? 'Aktuelle Meldungen' : 'Archiv';
+  document.querySelector('.results-heading h3').textContent = state.viewingArchive ? 'Archivierte Meldungen' : 'Aktuelle Meldungen';
   loadData();
 });
 
